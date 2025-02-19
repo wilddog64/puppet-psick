@@ -29,14 +29,13 @@ Facter.add('services') do
             cachefile_hash.merge!(services_hash)
             FileUtils.mkdir_p(facts_dir) if !File::exists?(facts_dir)
             File.open(svc_cache_file, 'w') do |out|
-		YAML.dump(cachefile_hash, out)
+            YAML.dump(cachefile_hash, out)
             end
 
           end
         end
 
-        # Since they service key is already added, we return directly its
-	# content.
+        # Since they service key is already added, we return directly its content.
         services_hash['services']
     end
 end

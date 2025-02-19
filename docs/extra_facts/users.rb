@@ -11,7 +11,7 @@ def deep_simplify_record(hash, keep)
     if value.is_a?(Hash)
       deep_simplify_record(value, keep)
     else
-      keep.include?(key) 
+      keep.include?(key)
     end
   end
 end

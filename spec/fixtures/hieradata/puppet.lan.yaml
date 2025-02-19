@@ -14,17 +14,17 @@
   puppet_enterprise::profile::master::r10k_remote: 'git@git.lan:puppet/control-repo.git'
   puppet_enterprise::profile::master::code_manager_auto_configure: true
   puppet_enterprise::profile::master::r10k_private_key: '/etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa'
-  #setup code_manager to update classes in the console after environment code deployment 
-  puppet_enterprise::profile::master::code_manager::post_environment_hooks: 
-    - url: 'https://puppet.lan:4433/classifier-api/v1/update-classes'    
-      use-client-ssl: true 
+  #setup code_manager to update classes in the console after environment code deployment
+  puppet_enterprise::profile::master::code_manager::post_environment_hooks:
+    - url: 'https://puppet.lan:4433/classifier-api/v1/update-classes'
+      use-client-ssl: true
 
 
   # Code manager
-  psick::puppet::pe_code_manager::deploy_user: 'deployer'        
-  psick::puppet::pe_code_manager::pe_password: 'Testonly.2Encrypt_n_change'        
-  psick::puppet::pe_code_manager::lifetime: '5y'        
-  psick::puppet::pe_code_manager::deploy_ssh_private_source: 'file:///home/deployer/.ssh/id_rsa'        
+  psick::puppet::pe_code_manager::deploy_user: 'deployer'
+  psick::puppet::pe_code_manager::pe_password: 'Testonly.2Encrypt_n_change'
+  psick::puppet::pe_code_manager::lifetime: '5y'
+  psick::puppet::pe_code_manager::deploy_ssh_private_source: 'file:///home/deployer/.ssh/id_rsa'
 
   # Config for the GIT Runners for Puppet deployments
   # Tokens change at every gitlab installation

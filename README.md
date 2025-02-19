@@ -7,7 +7,7 @@ This is the PSICK (Puppet Systems Infrastructure Construction Kit) module, a mod
 Example42's psick Puppet module provides the following features, all of which are optional:
 
 -   [Classification](docs/classification.md) - Manage Puppet classification in a smart, staged, Hiera driven way.
--   A set of [base profiles](docs/profiles.md) for common systems management needs on: Linux, MacOS and Windows. 
+-   A set of [base profiles](docs/profiles.md) for common systems management needs on: Linux, MacOS and Windows.
 -   Integration with the companion **psick_profile** module to manage multiple more or less common applications
 
 The module is designed to:
@@ -80,7 +80,7 @@ Example of Hiera data to classifiy Linux and Windows nodes:
 
 ## Psick base profiles
 
-Psick provides ready to use profiles for many common OS configurations: users management, time, openssh, keys, cronjobs, sysctl, different languages setups (php, ruby, python...), motd, hosts file, common packages, proxy... 
+Psick provides ready to use profiles for many common OS configurations: users management, time, openssh, keys, cronjobs, sysctl, different languages setups (php, ruby, python...), motd, hosts file, common packages, proxy...
 
 Refer to the specific documentation for more details. Here is some example Hiera data to manage uan user with admin powers, the dns resolver and some limits, according to the profile used:
 

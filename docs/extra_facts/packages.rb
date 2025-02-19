@@ -23,20 +23,20 @@ Facter.add('package') do
           begin
 
             packages_hash = YAML.load(%x{puppet resource package --to_yaml})
-	    packages_hash['packages'] = packages_hash.delete('package')
-            
+            packages_hash['packages'] = packages_hash.delete('package')
+
             cachefile_hash = Hash.new
             cachefile_hash.merge!(packages_hash)
             FileUtils.mkdir_p(facts_dir) if !File::exists?(facts_dir)
             File.open(pkg_cache_file, 'w') do |out|
-		YAML.dump(cachefile_hash, out)
+            YAML.dump(cachefile_hash, out)
             end
 
           end
         end
 
         # Since they package key is already added, we return directly its
-	# content.
+   # content.
         packages_hash['packages']
     end
 end

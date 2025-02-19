@@ -27,7 +27,7 @@ Facter.add('upgradable_packages') do
 
             case os
               when /Debian/
-		command = "apt-get --just-print upgrade | grep '^Inst'"      
+                command = "apt-get --just-print upgrade | grep '^Inst'"
                 raw_result = `#{command}`
                 result = raw_result.tr('()[]', '')
                 name_pos = 1
@@ -40,7 +40,7 @@ Facter.add('upgradable_packages') do
                 version_pos = 1
                 repo_pos = 2
               when /Suse/
-		command = "zypper list-updates | grep 'v '  | awk 'BEGIN { FS = \"|\" } ; { print $3 $5 $2 }'"      
+                command = "zypper list-updates | grep 'v '  | awk 'BEGIN { FS = \"|\" } ; { print $3 $5 $2 }'"
                 result = `#{command}`
                 name_pos = 0
                 version_pos = 1
@@ -53,11 +53,11 @@ Facter.add('upgradable_packages') do
             packages_hash = Hash.new
             pkg_hash = Hash.new
             result.each_line do |package|
-              package_array = package.split
-              package_name = package_array[name_pos]
-              pkg_hash[package_name] = {}
+              package_array                     = package.split
+              package_name                      = package_array[name_pos]
+              pkg_hash[package_name]            = {}
               pkg_hash[package_name]['version'] = package_array[version_pos]
-              pkg_hash[package_name]['repo'] = package_array[repo_pos]
+              pkg_hash[package_name]['repo']    = package_array[repo_pos]
 
               packages_hash.merge!(pkg_hash)
             end
@@ -67,7 +67,7 @@ Facter.add('upgradable_packages') do
             cachefile_hash['upgradable_packages'].merge!(packages_hash)
             FileUtils.mkdir_p(facts_dir) if !File::exists?(facts_dir)
             File.open(pkg_cache_file, 'w') do |out|
-		YAML.dump(cachefile_hash, out)
+            YAML.dump(cachefile_hash, out)
             end
 
           end

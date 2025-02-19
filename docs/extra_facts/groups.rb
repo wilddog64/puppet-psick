@@ -32,7 +32,7 @@ Facter.add('group') do
           begin
 
             groups_hash = YAML.load(%x{puppet resource group --to_yaml})
-	    groups_hash['groups'] = groups_hash.delete('group')
+            groups_hash['groups'] = groups_hash.delete('group')
             groups_hash_reduced  = Hash.new("groups")
             groups_hash_reduced['groups'] = deep_simplify_record(groups_hash['groups'], ['gid'])
 
@@ -40,14 +40,14 @@ Facter.add('group') do
             cachefile_hash.merge!(groups_hash_reduced)
             FileUtils.mkdir_p(facts_dir) if !File::exists?(facts_dir)
             File.open(grp_cache_file, 'w') do |out|
-		YAML.dump(cachefile_hash, out)
+            YAML.dump(cachefile_hash, out)
             end
 
           end
         end
 
         # Since they group key is already added, we return directly its
-	# content.
+   # content.
         groups_hash_reduced['groups']
     end
 end
